@@ -1,0 +1,172 @@
+{{ if !options.fixed }}
+<ol class="aplayer-list{{ if options.listFolded }} aplayer-list-hide{{ /if }}">
+    {{ include './list-item.art' getObject({
+        theme: options.theme,
+        audio: options.audio,
+        index: 1
+    }) }}
+</ol>
+<div class="no-data"><span>暂无播放数据</span></div>
+<div class="aplayer-body">
+    
+    <div class="aplayer-info">
+
+        <div class="aplayer-music">
+            <span class="aplayer-title"></span>
+            <span class="aplayer-author"></span>
+            <span class="aplayer-time-inner">
+                <span class="aplayer-ptime">00:00</span> / <span class="aplayer-dtime">00:00</span>
+            </span>
+        </div>
+
+        <div class="aplayer-lrc">
+            <div class="aplayer-lrc-contents" style="transform: translateY(0); -webkit-transform: translateY(0);"></div>
+        </div>
+
+        <div class="aplayer-controller">
+            <div class="aplayer-bar-wrap">
+                <div class="aplayer-bar">
+                    <div class="aplayer-loaded" style="width: 0"></div>
+                    <div class="aplayer-played" style="width: 0; background: {{ options.theme }};">
+                        <span class="aplayer-thumb" style="background: {{ options.theme }};">
+                            <span class="aplayer-loading-icon">{{@ icons.loading }}</span>
+                        </span>
+                    </div>
+                </div>
+                <span class="aplayer-time-inner">
+                    <span class="aplayer-ptime">00:00</span> / <span class="aplayer-dtime">00:00</span>
+                </span>
+            </div>
+            
+            <div class="aplayer-time">
+
+                <span class="aplayer-icon aplayer-icon-back">
+                    {{@ icons.skip }}
+                </span>
+                <span class="aplayer-icon aplayer-icon-play">
+                    {{@ icons.play }}
+                </span>
+                <span class="aplayer-icon aplayer-icon-forward">
+                    {{@ icons.skip }}
+                </span>
+                
+                <div class="aplayer-volume-wrap" title="音量控制">
+                    <button type="button" class="aplayer-icon aplayer-icon-volume-down">
+                        {{@ icons.volumeDown }}
+                    </button>
+                    <div class="aplayer-volume-bar-wrap">
+                        <div class="aplayer-volume-bar">
+                            <div class="aplayer-volume" style="height: 80%; background: {{ options.theme }};"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" title="顺序播放" class="aplayer-icon aplayer-icon-order">
+                    {{ if options.order === 'list' }}{{@ icons.orderList }}{{ else if options.order === 'random' }}{{@ icons.orderRandom }}{{ /if }}
+                </button>
+
+                <div class="aplayer-pic aplayer-play-title" title="播放">
+                    <div class="aplayer-button aplayer-play">{{@ icons.play }}</div>
+                </div>
+
+                <button type="button" title="列表循环" class="aplayer-icon aplayer-icon-loop">
+                    {{ if options.loop === 'one' }}{{@ icons.loopOne }}{{ else if options.loop === 'all' }}{{@ icons.loopAll }}{{ else if options.loop === 'none' }}{{@ icons.loopNone }}{{ /if }}
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-menu">
+                    {{@ icons.menu }}
+                </button>
+                
+                
+                <button type="button" class="aplayer-icon aplayer-icon-add">
+                    <input title="上传本地文件" type="file" accept=".mp3, .wma" id="fileInput" multiple>
+                    <svg class="icon" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2309"><path d="M514.048 62.464q93.184 0 175.616 35.328t143.872 96.768 96.768 143.872 35.328 175.616q0 94.208-35.328 176.128t-96.768 143.36-143.872 96.768-175.616 35.328q-94.208 0-176.64-35.328t-143.872-96.768-96.768-143.36-35.328-176.128q0-93.184 35.328-175.616t96.768-143.872 143.872-96.768 176.64-35.328zM772.096 576.512q26.624 0 45.056-18.944t18.432-45.568-18.432-45.056-45.056-18.432l-192.512 0 0-192.512q0-26.624-18.944-45.568t-45.568-18.944-45.056 18.944-18.432 45.568l0 192.512-192.512 0q-26.624 0-45.056 18.432t-18.432 45.056 18.432 45.568 45.056 18.944l192.512 0 0 191.488q0 26.624 18.432 45.568t45.056 18.944 45.568-18.944 18.944-45.568l0-191.488 192.512 0z" p-id="2310"></path></svg>
+                </button>
+                <button title="清空播放列表" type="button" class="aplayer-icon aplayer-icon-del">
+                    <svg class="icon" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1505"><path d="M3.303226 122.350979h1017.389347v52.851394H3.303226z" fill="#231815" p-id="1506"></path><path d="M798.452459 127.107604h-52.851395V105.702789a52.851395 52.851395 0 0 0-52.851395-52.851394H360.578654a52.851395 52.851395 0 0 0-52.851395 52.851394v21.404815h-52.851395V105.702789a105.702789 105.702789 0 0 1 105.70279-105.702789h332.171015a105.702789 105.702789 0 0 1 105.70279 105.702789z" fill="#231815" p-id="1507"></path><path d="M790.52475 1023.995772H281.830076a132.128487 132.128487 0 0 1-132.128487-132.128487l-26.425697-769.516306h826.860069l-26.425697 770.573334a132.128487 132.128487 0 0 1-133.185514 131.071459zM177.184314 175.202373l26.425698 715.872141a79.277092 79.277092 0 0 0 79.277092 79.277092h507.637646a79.277092 79.277092 0 0 0 79.277092-79.277092l26.425697-716.664912z" fill="#231815" p-id="1508"></path><path d="M351.858174 334.285071h48.359026v477.776608h-48.359026zM513.583441 334.285071h48.359027v477.776608h-48.359027zM675.572966 334.285071h48.359026v477.776608h-48.359026z" fill="#231815" p-id="1509"></path></svg>
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-lrc">
+                    {{@ icons.lrc }}
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div class="aplayer-notice"></div>
+    <div class="aplayer-miniswitcher"><button class="aplayer-icon">{{@ icons.right }}</button></div>
+</div>
+{{ else }}
+<ol class="aplayer-list{{ if options.listFolded }} aplayer-list-hide{{ /if }}">
+    {{ include './list-item.art' getObject({
+        theme: options.theme,
+        audio: options.audio,
+        index: 1
+    }) }}
+</ol>
+<div class="aplayer-body">
+    <div class="aplayer-pic" style="{{ if cover  }}background-image: url(&quot;{{ cover }}&quot;);{{ /if }}background-color: {{ options.theme }};">
+        <div class="aplayer-button aplayer-play">{{@ icons.play }}</div>
+    </div>
+    <div class="aplayer-info" style="display: none;">
+        <div class="aplayer-music">
+            <span class="aplayer-title">No audio</span>
+            <span class="aplayer-author"></span>
+        </div>
+        <div class="aplayer-controller">
+            <div class="aplayer-bar-wrap">
+                <div class="aplayer-bar">
+                    <div class="aplayer-loaded" style="width: 0"></div>
+                    <div class="aplayer-played" style="width: 0; background: {{ options.theme }};">
+                        <span class="aplayer-thumb" style="background: {{ options.theme }};">
+                            <span class="aplayer-loading-icon">{{@ icons.loading }}</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="aplayer-time">
+                <span class="aplayer-icon aplayer-icon-back">
+                    {{@ icons.skip }}
+                </span>
+                <span class="aplayer-icon aplayer-icon-play">
+                    {{@ icons.play }}
+                </span>
+                <span class="aplayer-icon aplayer-icon-forward">
+                    {{@ icons.skip }}
+                </span>
+                <div class="aplayer-volume-wrap">
+                    <button type="button" class="aplayer-icon aplayer-icon-volume-down">
+                        {{@ icons.volumeDown }}
+                    </button>
+                    <div class="aplayer-volume-bar-wrap">
+                        <div class="aplayer-volume-bar">
+                            <div class="aplayer-volume" style="height: 80%; background: {{ options.theme }};"></div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="aplayer-icon aplayer-icon-order">
+                    {{ if options.order === 'list' }}{{@ icons.orderList }}{{ else if options.order === 'random' }}{{@ icons.orderRandom }}{{ /if }}
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-loop">
+                    {{ if options.loop === 'one' }}{{@ icons.loopOne }}{{ else if options.loop === 'all' }}{{@ icons.loopAll }}{{ else if options.loop === 'none' }}{{@ icons.loopNone }}{{ /if }}
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-menu">
+                    {{@ icons.menu }}
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-add">
+                    {{@ icons.menu }}
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-del">
+                    {{@ icons.menu }}
+                </button>
+                <button type="button" class="aplayer-icon aplayer-icon-lrc">
+                    {{@ icons.lrc }}
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="aplayer-notice"></div>
+    <div class="aplayer-miniswitcher"><button class="aplayer-icon">{{@ icons.right }}</button></div>
+</div>
+<div class="aplayer-lrc">
+    <div class="aplayer-lrc-contents" style="transform: translateY(0); -webkit-transform: translateY(0);"></div>
+</div>
+{{/if}}

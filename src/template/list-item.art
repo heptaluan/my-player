@@ -1,0 +1,11 @@
+{{each audio}}
+<li>
+    <div>
+    <span class="aplayer-list-cur" style="background-color: {{ $value.theme || theme }};"></span>
+    <span class="aplayer-list-index">{{ $index + index }}</span>
+    <span class="aplayer-list-title">{{ $value.name }}</span>
+    <span class="aplayer-list-author">{{ $value.artist }}</span>
+    </div>
+    <span class="aplayer-delete"><svg class="icon" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4059"><path d="M583.227496 511.832406L1009.251718 85.808183a49.943044 49.943044 0 0 0 0-71.059901 49.943044 49.943044 0 0 0-70.724713 0L512.167594 440.772504 85.808183 14.748282A50.278232 50.278232 0 0 0 14.748282 85.808183l426.024222 426.359411L14.748282 938.527005a50.278232 50.278232 0 0 0 71.059901 71.059902L511.832406 583.227496 938.527005 1009.251718A50.278232 50.278232 0 0 0 1009.251718 938.527005z" p-id="4060"></path></svg></span>
+</li>
+{{/each}}
